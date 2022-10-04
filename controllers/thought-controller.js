@@ -1,7 +1,7 @@
 const { Thought, User  } = require('../models');
 const thoughtController = {
     getAllThoughts(req, res){
-        Thought.findOne({})
+        Thought.find({})
         .populate({
             path: 'reactions',
             select: '-__v'
@@ -53,7 +53,7 @@ const thoughtController = {
     },
     updateThought({ params, body }, res){
         Thought.findOneAndUpdate(
-            { _id: params.id },
+            { _id: params.thoughtId },
             body,
             { new: true }
         )
